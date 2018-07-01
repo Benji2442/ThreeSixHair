@@ -1,9 +1,24 @@
 nav {
   font-family: 'Rouge Script', cursive;
-  font-size: 1.5rem;
-  margin-bottom: 40px; }
+  font-size: 1.5rem; }
   nav .navbar-brand {
     font-size: 2rem; }
+
+.carousel-inner {
+  height: 600px; }
+
+.carousel-item {
+  position: relative;
+  height: 100%; }
+
+.carousel-caption {
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: initial; }
+  .carousel-caption h1 {
+    font-family: "Rouge Script", cursive; }
+  .carousel-caption p {
+    font-size: 1.5rem; }
 
 #form-wrapper {
   max-width: 560px;

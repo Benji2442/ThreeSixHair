@@ -4,7 +4,7 @@ const express    = require("express"),
       mongoose   = require("mongoose");
 
 app.use(express.static('public'));
-mongoose.connect("mongodb://localhost/36hair");
+mongoose.connect("mongodb://localhost/TShair");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -14,11 +14,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 var contactQuerySchema = new mongoose.Schema({
     queryEmail: String,
-    queryText: String,
-    queryPicture: String
+    queryText: String
 });
 
-var Query = mongoose.model("36hairQuery", contactQuerySchema);
+var Query = mongoose.model("TShairQuery", contactQuerySchema);
 
 
 //===============================================
@@ -34,7 +33,26 @@ app.get("/contact", function(req, res){
 });
 
 app.post("/contact", function(req, res){
+		let queryEmail = req.body.queryEmail;
+    let queryText = req.body.queryText;
+    let newQuery = {queryEmail:queryEmail,queryText:queryText};
+    Query.create(newQuery, function(err){
+        if(err){
+            console.log(err);
+        }else{
+            res.redirect("contact");
+        }
+    });
+});
 
+app.get("/treatments", function(req, res){
+	Query.find({},function(err, allUsers){
+        if(err){
+            console.log(err);
+        }else{
+            res.render("treatments", {users:allUsers})
+        }
+    });
 });
 
 app.listen(3000, () => console.log("36hair Server started"));
