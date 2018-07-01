@@ -1,0 +1,10 @@
+nav {
+  font-family: 'Rouge Script', cursive;
+  font-size: 1.5rem;
+  margin-bottom: 40px; }
+  nav .navbar-brand {
+    font-size: 2rem; }
+
+#form-wrapper {
+  max-width: 560px;
+  margin: 0 auto; }
