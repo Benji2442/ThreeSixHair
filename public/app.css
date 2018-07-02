@@ -23,3 +23,12 @@ nav {
 #form-wrapper {
   max-width: 560px;
   margin: 0 auto; }
+
+.fa {
+  padding: 9px;
+  font-size: 25px;
+  width: 42px;
+  border-radius: 50%;
+  text-decoration: none;
+  margin: 5px 2px;
+  background-color: #FFF; }
