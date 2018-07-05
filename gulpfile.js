@@ -61,7 +61,7 @@ var nodemon = require('nodemon');
  */
 
  gulp.task("styles", function(){
- 	gulp.src("sass/app.sass")
+ 	gulp.src("scss/app.scss")
  	.pipe(sass())
  	.pipe(gulp.dest("./public"))
  	.pipe(browserSync.reload({stream: true}));
@@ -99,5 +99,5 @@ gulp.task('nodemon', function (cb) {
 
 gulp.task('default', ['browser-sync'], function () {
   gulp.watch(['views/**/*.ejs'], reload);
-	gulp.watch("./sass/*.sass", ["styles"], reload);
+	gulp.watch("./scss/*.scss", ["styles"], reload);
 });

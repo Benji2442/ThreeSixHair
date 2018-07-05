@@ -1,0 +1,56 @@
+//// Nav styles
+#topHeader {
+  color: #fff;
+  font-family: $roboto;
+  padding: 5px 25px;
+
+  ul, a {
+    margin: 0;
+  }
+
+  a {
+    font-size: 1rem;
+    color: #fff;
+
+    span {
+      padding-right: 5px;
+    }
+  }
+}
+
+.social-icon {
+  list-style-type: none;
+  margin: 5px 5px;
+  display: inline-block;
+  font-size: 20px;
+}
+
+#top-nav {
+  position: absolute;
+  top: 66px;
+  z-index: 1000;
+  width: 100%;
+
+  ul {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  a {
+    color: $primary-color;
+  }
+}
+
+nav {
+  font-family: $primary-font;
+  font-size: 1.5rem;
+  background: transparent;
+
+  .navbar-brand {
+    font-size: 2rem;
+  }
+}
+
+.navbar-toggler {
+  margin: 0 auto;
+}

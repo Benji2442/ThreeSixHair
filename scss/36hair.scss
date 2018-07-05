@@ -1,0 +1,29 @@
+//// 36hair styles
+
+.carousel-item {
+  position: relative;
+  height: 100%;
+  max-height: 720px;
+}
+
+.carousel-caption {
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: initial;
+
+  h1 {
+    font-family: $primary-font;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+}
+
+.darken {
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    )
+}
