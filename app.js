@@ -46,13 +46,7 @@ app.post("/contact", function(req, res){
 });
 
 app.get("/treatments", function(req, res){
-	Query.find({},function(err, allUsers){
-        if(err){
-            console.log(err);
-        }else{
-            res.render("treatments", {users:allUsers})
-        }
-    });
+	res.render("treatments");
 });
 
 app.listen(3000, () => console.log("36hair Server started"));

@@ -1,22 +1,22 @@
 //// Nav styles
-#topHeader {
-  color: #fff;
-  font-family: $roboto;
-  padding: 5px 25px;
-
-  ul, a {
-    margin: 0;
-  }
-
-  a {
-    font-size: 1rem;
-    color: #fff;
-
-    span {
-      padding-right: 5px;
-    }
-  }
-}
+// #topHeader {
+//   color: #fff;
+//   font-family: $roboto;
+//   padding: 5px 25px;
+//
+//   ul, a {
+//     margin: 0;
+//   }
+//
+//   a {
+//     font-size: 1rem;
+//     color: #fff;
+//
+//     span {
+//       padding-right: 5px;
+//     }
+//   }
+// }
 
 .social-icon {
   list-style-type: none;
@@ -26,8 +26,6 @@
 }
 
 #top-nav {
-  position: absolute;
-  top: 66px;
   z-index: 1000;
   width: 100%;
 
@@ -37,14 +35,16 @@
   }
 
   a {
-    color: $primary-color;
+    color: #fff;
+		font-family: $montserrat;
+		font-weight: lighter;
+		font-size: 1rem
   }
 }
 
 nav {
   font-family: $primary-font;
   font-size: 1.5rem;
-  background: transparent;
 
   .navbar-brand {
     font-size: 2rem;
@@ -53,4 +53,28 @@ nav {
 
 .navbar-toggler {
   margin: 0 auto;
+}
+
+.nav-pills{
+	width: 150px;
+	text-align: center;
+	margin: 0 auto;
+	border-radius: 20px;
+	transition: background-color 0.5s ease;
+	&:hover{
+		background-color: #595959;
+	}
+}
+// Small devices (landscape phones, less than 768px)
+@media (min-width: 560px) and (max-width: 801px) {
+	#info{
+		position: absolute;
+		top: 8px;
+		right: 16px;
+	}
+	#top-nav-social{
+		position: absolute;
+		top: 8px;
+		left: 16px;
+	}
 }

@@ -6287,18 +6287,6 @@ html, body {
   padding: 0;
   margin: 0; }
 
-#topHeader {
-  color: #fff;
-  font-family: "Roboto", sans-serif;
-  padding: 5px 25px; }
-  #topHeader ul, #topHeader a {
-    margin: 0; }
-  #topHeader a {
-    font-size: 1rem;
-    color: #fff; }
-    #topHeader a span {
-      padding-right: 5px; }
-
 .social-icon {
   list-style-type: none;
   margin: 5px 5px;
@@ -6306,28 +6294,46 @@ html, body {
   font-size: 20px; }
 
 #top-nav {
-  position: absolute;
-  top: 66px;
   z-index: 1000;
   width: 100%; }
   #top-nav ul {
     text-align: center;
     margin: 0 auto; }
   #top-nav a {
-    color: #343A40; }
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    font-weight: lighter;
+    font-size: 1rem; }
 
 nav {
   font-family: "Great Vibes", cursive;
-  font-size: 1.5rem;
-  background: transparent; }
+  font-size: 1.5rem; }
   nav .navbar-brand {
     font-size: 2rem; }
 
 .navbar-toggler {
   margin: 0 auto; }
 
+.nav-pills {
+  width: 150px;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 20px;
+  transition: background-color 0.5s ease; }
+  .nav-pills:hover {
+    background-color: #595959; }
+
+@media (min-width: 560px) and (max-width: 801px) {
+  #info {
+    position: absolute;
+    top: 8px;
+    right: 16px; }
+  #top-nav-social {
+    position: absolute;
+    top: 8px;
+    left: 16px; } }
+
 .carousel-item {
-  position: relative;
   height: 100%;
   max-height: 720px; }
 
@@ -6344,12 +6350,15 @@ nav {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); }
 
 #contact-info {
-  position: relative;
-  top: 160px; }
+  padding: 60px 0 80px;
+  text-align: center; }
 
 #form-wrapper {
-  max-width: 560px;
+  max-width: 460px;
   margin: 0 auto; }
+
+#tag-line {
+  padding: 40px 0px 40px; }
 
 #hours {
   text-align: center; }
@@ -6364,3 +6373,6 @@ nav {
   text-decoration: none;
   margin: 5px 2px;
   background-color: #FFF; }
+
+#accordion {
+  padding: 50px 0px; }
