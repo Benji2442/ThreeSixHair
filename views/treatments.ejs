@@ -1,20 +1,48 @@
 <% include partials/header.ejs %>
 <% include partials/nav-bar.ejs %>
 
-<div class="container" id="treatments-accordion">
-	<div class="accordion" id="accordion">
+<div class="container-fluid" id="treatments-accordion">
+	<div class="accordion col-lg-8 col-md-10" id="accordion">
 
 	  <div class="card">
 	    <div class="card-header" id="headingOne">
 	      <h5 class="mb-0">
 	        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#styling" aria-expanded="true" aria-controls="styling">
-	          Styling
+						<div class="heading-title">
+							<h2>Styling</h2>
+		          <p>Fancy just a trim, restyle or some curls?</p>
+						</div>
 	        </button>
 	      </h5>
 	    </div>
-	    <div id="styling" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+	    <div id="styling" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 	      <div class="card-body">
-	        one
+	        <ul>
+	        	<li>
+	        		<h6>Wash & Style - £20</h6>
+							<p>Your hair will be washed, then blowdried into your preferred style. Followed by straightening or curling.</p>
+	        	</li>
+						<li>
+	        		<h6>Wash, Cut & Style - £30</h6>
+							<p>Your hair will be washed, cut & blowdried into your preferred style. Followed by straightening or curling.</p>
+	        	</li>
+						<li>
+	        		<h6>Wash & Restyle - £40</h6>
+							<p>Your hair will be washed, cut & blowdried into your preferred style. Followed by straightening or curling. For clients having more than 5 inches cut.</p>
+	        	</li>
+						<li>
+	        		<h6>Curling - £10</h6>
+							<p>Hair curling with either GHD's or curling tongs/wand. Price only valid for clients with pre washed hair.</p>
+	        	</li>
+						<li>
+	        		<h6>Dry cut - £15</h6>
+							<p>The cluents hair will be straightened and cut to style. Clients hair must be clean.</p>
+	        	</li>
+						<li>
+	        		<h6>Fringe tidy - Free</h6>
+							<p>This service is free but by appointment only.</p>
+	        	</li>
+	        </ul>
 	      </div>
 	    </div>
 	  </div>
@@ -23,13 +51,29 @@
 	    <div class="card-header" id="headingTwo">
 	      <h5 class="mb-0">
 	        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-	          Collapsible Group Item #2
+						<div class="heading-title">
+							<h2>Treatments</h2>
+		          <p>Conditioning treatments to improve or maintain the condition of your hair</p>
+						</div>
 	        </button>
 	      </h5>
 	    </div>
 	    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 	      <div class="card-body">
-	        two
+	        <ul>
+						<li>
+	        		<h6>Olaplex no2 - £5</h6>
+							<p>A deep repairing treatment, perfect for adding on to any cut or colour service.</p>
+	        	</li>
+						<li>
+	        		<h6>Olaplex colour service - £20</h6>
+							<p>Recommended on all bleach services to repair hair & prevent damage. It can also be added to all colour services. </p>
+	        	</li>
+						<li>
+	        		<h6>Olaplex no3 - take home treatment - £25</h6>
+							<p>Olaplex no3 is an at home treatment, used to revitalise & regenerate dry, damaged hair. To be used weekly. </p>
+	        	</li>
+	        </ul>
 	      </div>
 	    </div>
 	  </div>
@@ -38,15 +82,122 @@
 	    <div class="card-header" id="headingThree">
 	      <h5 class="mb-0">
 	        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-	          Collapsible Group Item #3
+						<div class="heading-title">
+							<h2>Creative/Colouring</h2>
+		          <p>From highlights to balayage, roots to colour correction, we have it all!</p>
+						</div>
 	        </button>
 	      </h5>
 	    </div>
 	    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
 	      <div class="card-body">
-	        three
+					<ul>
+						<li>
+							<h6>Full head colour - £65</h6>
+							<p>A full head of colour applied to the scalp  from root to tip. A skin test must carried out 48 hours before appointment.
+							Price includes cut & blowdry.</p>
+						</li>
+						<li>
+							<h6>Roots/regrowth - £45</h6>
+							<p>Re application of existing colour to the root area only. Existing clients do not need a skin test. New clients must have a skin test 48 hours before appointment.
+							Price includes cut & blowdry.</p>
+						</li>
+						<li>
+							<h6>Semi permanent colour - £55</h6>
+							<p>Semi permanent hair colour applied from root to tip. Skin test required 48 before appointment.
+							Price includes cut & blowdry.</p>
+						</li>
+						<li>
+							<h6>Half head highlights - £70</h6>
+							<p>Highlights added to the hair using foil. To create a multitonal effect.
+							Price includes a cut & blowdry.</p>
+						</li>
+						<li>
+							<h6>Full head highlights - £85</h6>
+							<p>Highlights added to the hair using foil. To create a multitonal effect.
+							Price includes a cut & blowdry.</p>
+						</li>
+						<li>
+							<h6>Highlights & colour - £80</h6>
+							<p>Highlights added to the hair using foil. To create a multitonal effect. With a full colour added between foils. A skin test is required 48 hours before appointment.
+							Price includes a cut & blowdry.</p>
+						</li>
+						<li>
+							<h6>Full head bleach & toner - £70</h6>
+							<p>Bleach will be applied to all the hair to lift, then toned to desired shade.
+							Price includes cut & blowdry.</p>
+						</li>
+						<li>
+							<h6>Bleach regrowth & toner - £60</h6>
+							<p>Bleach will be applied to the roots of the hair to lift, then toned to desired shade.
+							Price includes cut & blowdry.</p>
+						</li>
+						<li>
+							<h6>Balayage & toner - £100</h6>
+							<p>Colour will be applied to your hair using foiling and free hand techniques to create a soft or multitonal colour.
+							Price includes cut & blowdry.</p>
+						</li>
+						<li>
+							<h6>Toner - £15</h6>
+							<p>A toner is used to refresh or change your current colour temporarily. This is an add on service for other colours that do not include a toner.</p>
+						</li>
+						<li>
+							<h6>Creative colouring - P.O.C</h6>
+							<p>olour correction is for those who need help ammending a colour that hasnt gone to plan, removing colour bands from hair or evening out patchy colours.
+							Appointments on consultation only.</p>
+						</li>
+						<li>
+							<h6>Colour correction - P.O.C</h6>
+							<p>Colour correction is for those who need help ammending a colour that hasnt gone to plan, removing colour bands from hair or evening out patchy colours.
+							Appointments on consultation only. </p>
+						</li>
+						<li>
+							<h6>Colour transformation - P.O.C</h6>
+							<p>Colour transformation is for those who want to completely change their colour. From blonde to red, or black to pink. We’ve got you covered.
+							Appointments on consultation only.</p>
+						</li>
+					</ul>
 	      </div>
 	    </div>
+	  </div>
+
+		<div class="card">
+		 <div class="card-header" id="headingFour">
+			 <h5 class="mb-0">
+				 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+					 <div class="heading-title">
+						 <h2>Extensions</h2>
+						 <p>Add length, volume or colour!</p>
+					 </div>
+				 </button>
+			 </h5>
+		 </div>
+		 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+			 <div class="card-body">
+				 <ul>
+					 <li>
+						 <h6>Micro ring weave - £55</h6>
+						 <p>Micro rings are applied to the hair, then the hair gently sewn around the rings to create a variety of looks.
+						 Price does not include hair.
+					   Consultation is essential.</p>
+					 </li>
+					 <li>
+						 <h6>Maintenance - £15</h6>
+						 <p>The hair is gently pushed back up to the scalp replacing any old rings. </p>
+					 </li>
+					 <li>
+						 <h6>Removal - £10</h6>
+						 <p>Removal of all rings, hair & thread.</p>
+					 </li>
+					 <li>
+						 <h6>Removal with new fitting - Free</h6>
+					 </li>
+					 <li>
+						 <h6>Removal, wash & blowdry - £15</h6>
+					 </li>
+				 </ul>
+			 </div>
+		 </div>
 	  </div>
 
 	</div>

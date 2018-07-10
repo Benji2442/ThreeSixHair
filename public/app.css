@@ -6375,4 +6375,17 @@ nav {
   background-color: #FFF; }
 
 #accordion {
-  padding: 50px 0px; }
+  padding: 50px 0px;
+  text-align: center;
+  margin: 0 auto; }
+  #accordion .heading-title {
+    color: #000;
+    font-family: "Great Vibes", cursive; }
+    #accordion .heading-title p {
+      margin: 0;
+      font-family: "Roboto", sans-serif; }
+  #accordion ul {
+    list-style-type: none; }
+  #accordion button:hover,
+  #accordion button:focus {
+    text-decoration: none; }
