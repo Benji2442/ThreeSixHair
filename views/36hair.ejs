@@ -37,11 +37,11 @@
 
 <div class="container-fluid" id="mail-list-wrapper">
 	<div class="row">
-		<form class="col-md-6" id="mail-list-form">
+		<form action="/" method="POST" class="col-md-6" id="mail-list-form">
 		  <div class="form-group">
 				<h3>Join our mailing list for exclusive offers!</h3>
-		    <label for="exampleInputEmail1">Email address</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+		    <label for="mailingEmail">Email address</label>
+		    <input name="mailingEmail" type="email" class="form-control" id="mailingEmail" aria-describedby="emailHelp" placeholder="Enter email">
 		  </div>
 		  <button type="submit" class="btn btn-primary">Submit</button>
 		</form>
