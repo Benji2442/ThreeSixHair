@@ -39,7 +39,7 @@ app.post("/contact", function(req, res){
     let queryText = req.body.queryText;
     let newEmail = {queryEmail:queryEmail};
 
-		// check email address isnt already in teh database
+		// check email address isnt already in the database
 		// add email address to data base
 		contactEmail.create(newEmail, function(err){
         if(err){

@@ -6349,6 +6349,14 @@ nav {
 .darken {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); }
 
+#mail-list-wrapper {
+  background-color: #000; }
+  #mail-list-wrapper #mail-list-form {
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    padding: 40px 0px; }
+
 #contact-info {
   padding: 60px 0 80px;
   text-align: center; }
