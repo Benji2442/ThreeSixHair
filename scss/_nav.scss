@@ -66,7 +66,7 @@ nav {
 	}
 }
 // Small devices (landscape phones, less than 768px)
-@media (min-width: 560px) and (max-width: 801px) {
+@media (max-width: 801px) {
 	#info{
 		position: absolute;
 		top: 8px;
@@ -76,5 +76,12 @@ nav {
 		position: absolute;
 		top: 8px;
 		left: 16px;
+	}
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px){
+	.navbar-toggler{
+		margin-top: 40px;
 	}
 }

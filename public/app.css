@@ -6285,7 +6285,9 @@ a.text-dark:hover, a.text-dark:focus {
 html, body {
   box-sizing: border-box;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  height: 100%;
+  box-sizing: border-box; }
 
 .social-icon {
   list-style-type: none;
@@ -6323,7 +6325,7 @@ nav {
   .nav-pills:hover {
     background-color: #595959; }
 
-@media (min-width: 560px) and (max-width: 801px) {
+@media (max-width: 801px) {
   #info {
     position: absolute;
     top: 8px;
@@ -6332,6 +6334,121 @@ nav {
     position: absolute;
     top: 8px;
     left: 16px; } }
+
+@media (max-width: 575.98px) {
+  .navbar-toggler {
+    margin-top: 40px; } }
+
+#mail-list-wrapper {
+  background-color: #292929; }
+  #mail-list-wrapper #mail-list-form {
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    padding: 40px 0px; }
+
+#about-wrapper {
+  padding: 50px 0px;
+  text-align: center;
+  color: #fff;
+  margin: 0 auto; }
+
+#avatar-wrapper {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 30px; }
+  #avatar-wrapper img {
+    width: 150px;
+    position: relative;
+    top: -15px; }
+
+#testimonials {
+  text-align: center;
+  color: #fff; }
+
+#carouselTestimonialSlidesOnly {
+  margin: 0 auto;
+  height: 350px; }
+  #carouselTestimonialSlidesOnly .carousel-item {
+    height: 100%;
+    padding: 40px 30px; }
+    #carouselTestimonialSlidesOnly .carousel-item .bubble {
+      border-radius: 20px;
+      width: 450px;
+      background: #292929;
+      position: relative;
+      color: #fff;
+      -webkit-box-shadow: 0px 17px 31px 1px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 0px 17px 31px 1px rgba(0, 0, 0, 0.75);
+      box-shadow: 0px 17px 31px 1px rgba(0, 0, 0, 0.75); }
+      #carouselTestimonialSlidesOnly .carousel-item .bubble:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: #292929;
+        border-bottom: 0;
+        border-left: 0;
+        margin-left: -10px;
+        margin-bottom: -20px; }
+      #carouselTestimonialSlidesOnly .carousel-item .bubble p {
+        padding: 25px 20px;
+        margin-bottom: 0px; }
+
+.fa {
+  padding: 9px;
+  font-size: 25px;
+  width: 42px;
+  border-radius: 50%;
+  text-decoration: none;
+  margin: 5px 2px;
+  background-color: #FFF; }
+
+#contact-info {
+  padding: 60px 0 80px;
+  text-align: center; }
+
+#form-wrapper {
+  max-width: 460px;
+  margin: 0 auto; }
+
+#second-contact-wrapper {
+  margin: 0 auto; }
+
+#tag-line {
+  padding: 40px 0px 40px; }
+
+#hours {
+  text-align: center; }
+  #hours p {
+    margin: 5px; }
+
+#accordion {
+  padding: 50px 0px;
+  text-align: center;
+  margin: 0 auto; }
+  #accordion .heading-title {
+    color: #000;
+    font-family: "Great Vibes", cursive; }
+    #accordion .heading-title p {
+      margin: 0;
+      font-family: "Roboto", sans-serif; }
+  #accordion ul {
+    list-style-type: none;
+    padding: 0; }
+  #accordion button:hover,
+  #accordion button:focus {
+    text-decoration: none; }
+
+#landing-wrapper {
+  padding: 0;
+  background-color: #343A40;
+  min-height: 100%; }
 
 .carousel-item {
   height: 100%;
@@ -6349,51 +6466,6 @@ nav {
 .darken {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); }
 
-#mail-list-wrapper {
-  background-color: #000; }
-  #mail-list-wrapper #mail-list-form {
-    color: #fff;
-    text-align: center;
-    margin: 0 auto;
-    padding: 40px 0px; }
-
-#contact-info {
-  padding: 60px 0 80px;
-  text-align: center; }
-
-#form-wrapper {
-  max-width: 460px;
-  margin: 0 auto; }
-
-#tag-line {
-  padding: 40px 0px 40px; }
-
-#hours {
-  text-align: center; }
-  #hours p {
-    margin: 5px; }
-
-.fa {
-  padding: 9px;
-  font-size: 25px;
-  width: 42px;
-  border-radius: 50%;
-  text-decoration: none;
-  margin: 5px 2px;
-  background-color: #FFF; }
-
-#accordion {
-  padding: 50px 0px;
-  text-align: center;
-  margin: 0 auto; }
-  #accordion .heading-title {
-    color: #000;
-    font-family: "Great Vibes", cursive; }
-    #accordion .heading-title p {
-      margin: 0;
-      font-family: "Roboto", sans-serif; }
-  #accordion ul {
-    list-style-type: none; }
-  #accordion button:hover,
-  #accordion button:focus {
-    text-decoration: none; }
+@media (max-width: 767.98px) {
+  .display-1 {
+    font-size: 4rem; } }

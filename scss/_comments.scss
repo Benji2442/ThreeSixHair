@@ -1,0 +1,43 @@
+// testimonial restyles
+
+#testimonials{
+	text-align: center;
+	color: #fff;
+}
+
+#carouselTestimonialSlidesOnly{
+	margin: 0 auto;
+	height: 350px;
+	.carousel-item{
+		height: 100%;
+		padding: 40px 30px;
+		.bubble{
+			border-radius: 20px;
+			width: 450px;
+			background: #292929;
+			position: relative;
+			color: #fff;
+			-webkit-box-shadow: 0px 17px 31px 1px rgba(0,0,0,0.75);
+			-moz-box-shadow: 0px 17px 31px 1px rgba(0,0,0,0.75);
+			box-shadow: 0px 17px 31px 1px rgba(0,0,0,0.75);
+			&:after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				width: 0;
+				height: 0;
+				border: 20px solid transparent;
+				border-top-color: #292929;
+				border-bottom: 0;
+				border-left: 0;
+				margin-left: -10px;
+				margin-bottom: -20px;
+			}
+			p{
+				padding: 25px 20px;
+				margin-bottom: 0px;
+			}
+		}
+	}
+}

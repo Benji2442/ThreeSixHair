@@ -1,13 +1,14 @@
 //// Variables
-
-html, body {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
 $primary-font: 'Great Vibes', cursive;
 $roboto: "Roboto", sans-serif;
 $montserrat: 'Montserrat', sans-serif;
 
 $primary-color: #343A40;
+
+html, body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+	height: 100%;
+	box-sizing: border-box;
+}

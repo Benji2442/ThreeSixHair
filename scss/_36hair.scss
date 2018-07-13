@@ -1,4 +1,9 @@
 //// 36hair styles
+#landing-wrapper{
+	padding: 0;
+	background-color: $primary-color;
+	min-height: 100%;
+}
 
 .carousel-item {
   // position: relative;
@@ -28,12 +33,9 @@
     )
 }
 
-#mail-list-wrapper{
-	background-color: #000;
-	#mail-list-form{
-		color: #fff;
-		text-align: center;
-		margin: 0 auto;
-		padding: 40px 0px;
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px){
+	.display-1{
+		font-size: 4rem;
 	}
 }
