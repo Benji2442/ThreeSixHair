@@ -1,24 +1,27 @@
 const express     = require("express"),
       app         = express(),
       bodyParser  = require('body-parser'),
-      // mongoose    = require("mongoose"),
+      mongoose    = require("mongoose"),
 			nodemailer  = require("nodemailer"),
 			request     = require("request");
 
 app.use(express.static('public'));
-// mongoose.connect("mongodb://localhost/TShair"); NOT IN USE AT THE MOMENT!!!
+mongoose.connect("mongodb://localhost/TShair");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }))
 
-//===============================================
-// MONGOOSE SCHEMA    NOT IN USE AT THE MOMENT!!!! USING MAILCHIMP INSTEAD
-//===============================================
+// ===============================================
+// MONGOOSE SCHEMA FOR ADDING TREATMENTS
+// ===============================================
 
-// var queryContactEmailSchema = new mongoose.Schema({
-//     email: String
-// });
-//
-// var queryContactEmail = mongoose.model("TShairEmail", queryContactEmailSchema);
+var treatmentSchema = new mongoose.Schema({
+	group:{type: String, required: true},
+	name:{type: String, required: true},
+	price:{type: String, required: true},
+	desc:{type: String}
+});
+
+var Treatment = mongoose.model("Treatment", treatmentSchema);
 
 //===============================================
 // EMAIL TO MAILCHIMP FUNCTION
@@ -107,7 +110,31 @@ app.post("/contact", function(req, res){
 
 // RENDERS TREATMENTS PAGE
 app.get("/treatments", function(req, res){
-	res.render("treatments");
+	Treatment.find({}, function(err, treatments){
+        if(err){
+            console.log(err);
+        }else{
+            res.render("treatments", {treatments: treatments});
+        }
+    });
 });
+
+// RENDERS NEW TREATMENTS PAGE
+app.get("/treatments/new", function(req, res){
+	res.render("add-treatments");
+});
+
+// POST REQUEST TO ADD NEW TREATMENT TO MONGODB
+app.post("/treatments/new", function(req, res){
+	Treatment.create(req.body.treatment, function(err, newTreatment){
+        if(err){
+					console.log(err);
+            res.render("/");
+        }else{
+            res.redirect("/treatments/new");
+        }
+    })
+});
+
 
 app.listen(3000, () => console.log("36hair Server started"));
