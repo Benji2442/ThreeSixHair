@@ -110,4 +110,4 @@ app.get("/treatments", function(req, res){
 	res.render("treatments");
 });
 
-app.listen(3000, () => console.log("36hair Server started"));
+app.listen(process.env.PORT || 3000, () => console.log("36hair Server started"));
