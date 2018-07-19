@@ -6380,7 +6380,8 @@ nav {
 
 #testimonials {
   text-align: center;
-  color: #fff; }
+  color: #fff;
+  padding: 60px 0; }
 
 #carouselTestimonialSlidesOnly {
   margin: 0 auto;
