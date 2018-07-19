@@ -6339,6 +6339,20 @@ nav {
   .navbar-toggler {
     margin-top: 40px; } }
 
+#fb-outer-wrapper {
+  padding: 60px 0;
+  background-color: #fff; }
+
+#fb-inner-wrapper {
+  margin: 0 auto;
+  width: 280px; }
+  #fb-inner-wrapper .fb-page {
+    border-top: 40px solid #000;
+    border-bottom: 40px solid #000;
+    border-left: 10px solid #000;
+    border-right: 10px solid #000;
+    border-radius: 20px; }
+
 #mail-list-wrapper {
   background-color: #292929; }
   #mail-list-wrapper #mail-list-form {

@@ -1,0 +1,18 @@
+// FACEBOOK PHONE STYLES
+
+#fb-outer-wrapper{
+	padding: 60px 0;
+	background-color: #fff;
+}
+
+#fb-inner-wrapper{
+	margin: 0 auto;
+	width: 280px;
+	.fb-page{
+		border-top: 40px solid #000;
+		border-bottom: 40px solid #000;
+		border-left: 10px solid #000;
+		border-right: 10px solid #000;
+		border-radius: 20px;
+	}
+}
