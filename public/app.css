@@ -6341,10 +6341,10 @@ nav {
 
 #fb-outer-wrapper {
   padding: 60px 0;
-  background-color: #fff; }
+  background-color: #fff;
+  text-align: center; }
 
 #fb-inner-wrapper {
-  margin: 0 auto;
   width: 280px; }
   #fb-inner-wrapper .fb-page {
     border-top: 40px solid #000;
