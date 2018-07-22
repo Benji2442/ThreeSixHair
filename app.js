@@ -1,14 +1,16 @@
-const express     = require("express"),
-      app         = express(),
-      bodyParser  = require('body-parser'),
-      mongoose    = require("mongoose"),
-			nodemailer  = require("nodemailer"),
-			request     = require("request");
+const express        = require("express"),
+			methodOverride = require("method-override"),
+			bodyParser     = require('body-parser'),
+			mongoose       = require("mongoose"),
+			nodemailer     = require("nodemailer"),
+			request        = require("request"),
+      app            = express();
 
 app.use(express.static('public'));
 mongoose.connect("mongodb://localhost/TShair");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride("_method"));
 
 // ===============================================
 // MONGOOSE SCHEMA FOR ADDING TREATMENTS
@@ -109,6 +111,22 @@ app.post("/contact", function(req, res){
 });
 
 // RENDERS TREATMENTS PAGE
+app.get("/prices", function(req, res){
+	Treatment.find({}, function(err, treatments){
+        if(err){
+            console.log(err);
+        }else{
+            res.render("prices", {treatments: treatments});
+        }
+    });
+});
+
+
+//===============================================
+// ADMIN ROUTES
+//===============================================
+
+// RENDERS TABLE OF ALL TREATMENTS
 app.get("/treatments", function(req, res){
 	Treatment.find({}, function(err, treatments){
         if(err){
@@ -121,19 +139,52 @@ app.get("/treatments", function(req, res){
 
 // RENDERS NEW TREATMENTS PAGE
 app.get("/treatments/new", function(req, res){
-	res.render("add-treatments");
+	res.render("add-treatment");
 });
 
-// POST REQUEST TO ADD NEW TREATMENT TO MONGODB
+// CREATE ROUTE
 app.post("/treatments/new", function(req, res){
 	Treatment.create(req.body.treatment, function(err, newTreatment){
-        if(err){
-					console.log(err);
-            res.render("/");
-        }else{
-            res.redirect("/treatments/new");
-        }
-    })
+		if(err){
+			console.log(err);
+			res.render("/");
+		}else{
+			res.redirect("/treatments");
+		}
+	})
+});
+
+// EDIT ROUTE
+app.get("/treatments/:id/edit", function(req, res){
+	Treatment.findById(req.params.id, function(err, foundTreatment){
+		if(err){
+			res.redirect("/treatments");
+		}else{
+			res.render("edit-treatment", {treatment: foundTreatment});
+		}
+	});
+});
+
+// UPDATE ROUTES
+app.put("/treatments/:id", function(req, res){
+	Treatment.findByIdAndUpdate(req.params.id, req.body.treatment, function(err, updatedTreatment){
+		if(err){
+        console.log(err);
+    }else{
+        res.redirect("/treatments");
+    }
+	});
+});
+
+// DELETE ROUTES
+app.delete("/treatments/:id", function(req, res){
+	Treatment.findByIdAndRemove(req.params.id, function(err){
+		if(err){
+			res.redirect("/treatments");
+		}else{
+			res.redirect("/treatments");
+		}
+	});
 });
 
 

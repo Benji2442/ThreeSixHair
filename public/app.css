@@ -6484,3 +6484,9 @@ nav {
 @media (max-width: 767.98px) {
   .display-1 {
     font-size: 4rem; } }
+
+#addTreatment {
+  margin: 20px auto; }
+
+#delete {
+  display: inline; }
