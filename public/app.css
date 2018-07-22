@@ -6439,7 +6439,8 @@ nav {
   padding: 40px 0px 40px; }
 
 #hours {
-  text-align: center; }
+  text-align: center;
+  padding-bottom: 40px; }
   #hours p {
     margin: 5px; }
 
