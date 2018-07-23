@@ -188,4 +188,4 @@ app.delete("/treatments/:id", function(req, res){
 });
 
 
-app.listen(3000, () => console.log("36hair Server started"));
+app.listen(PORT || 3000, () => console.log("36hair Server started"));
