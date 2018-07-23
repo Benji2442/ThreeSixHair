@@ -6401,6 +6401,20 @@ nav {
         padding: 25px 20px;
         margin-bottom: 0px; }
 
+#fb-outer-wrapper {
+  padding: 60px 0;
+  background-color: #fff; }
+
+#fb-inner-wrapper {
+  margin: 0 auto;
+  width: 280px; }
+  #fb-inner-wrapper .fb-page {
+    border-top: 40px solid #000;
+    border-bottom: 40px solid #000;
+    border-left: 10px solid #000;
+    border-right: 10px solid #000;
+    border-radius: 20px; }
+
 .fa {
   padding: 9px;
   font-size: 25px;
