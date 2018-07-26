@@ -6316,14 +6316,25 @@ nav {
 .navbar-toggler {
   margin: 0 auto; }
 
-.nav-pills {
-  width: 150px;
+.nav-link {
+  width: 120px;
+  position: relative;
   text-align: center;
-  margin: 0 auto;
-  border-radius: 20px;
-  transition: background-color 0.5s ease; }
-  .nav-pills:hover {
-    background-color: #595959; }
+  margin: 0 auto; }
+  .nav-link:before {
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url("assets/Menu-Item-Est-1947.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    content: ""; }
+  .nav-link:hover:before {
+    opacity: 1; }
 
 @media (max-width: 801px) {
   #info {
@@ -6415,6 +6426,20 @@ nav {
         padding: 25px 20px;
         margin-bottom: 0px; }
 
+#fb-outer-wrapper {
+  padding: 60px 0;
+  background-color: #fff;
+  text-align: center; }
+
+#fb-inner-wrapper {
+  width: 280px; }
+  #fb-inner-wrapper .fb-page {
+    border-top: 40px solid #000;
+    border-bottom: 40px solid #000;
+    border-left: 10px solid #000;
+    border-right: 10px solid #000;
+    border-radius: 20px; }
+
 .fa {
   padding: 9px;
   font-size: 25px;
@@ -6482,6 +6507,26 @@ nav {
 .darken {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); }
 
+#fb-outer-wrapper {
+  padding: 60px 0;
+  background-color: #fff; }
+
+#fb-inner-wrapper {
+  margin: 0 auto;
+  width: 280px; }
+  #fb-inner-wrapper .fb-page {
+    border-top: 40px solid #000;
+    border-bottom: 40px solid #000;
+    border-left: 10px solid #000;
+    border-right: 10px solid #000;
+    border-radius: 20px; }
+
 @media (max-width: 767.98px) {
   .display-1 {
     font-size: 4rem; } }
+
+#addTreatment {
+  margin: 20px auto; }
+
+#delete {
+  display: inline; }

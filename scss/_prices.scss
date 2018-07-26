@@ -1,0 +1,23 @@
+// treatment styles
+
+#accordion{
+	padding: 50px 0px;
+	text-align: center;
+	margin: 0 auto;
+	.heading-title{
+		color: #000;
+		font-family: $primary-font;
+		p{
+			margin: 0;
+			font-family: $roboto;
+		}
+	}
+	ul{
+		list-style-type: none;
+		padding: 0;
+	}
+	button:hover,
+	button:focus{
+		text-decoration: none;
+	}
+}
