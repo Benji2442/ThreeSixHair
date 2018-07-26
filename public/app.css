@@ -6316,14 +6316,25 @@ nav {
 .navbar-toggler {
   margin: 0 auto; }
 
-.nav-pills {
-  width: 150px;
+.nav-link {
+  width: 120px;
+  position: relative;
   text-align: center;
-  margin: 0 auto;
-  border-radius: 20px;
-  transition: background-color 0.5s ease; }
-  .nav-pills:hover {
-    background-color: #595959; }
+  margin: 0 auto; }
+  .nav-link:before {
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url("assets/Menu-Item-Est-1947.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    content: ""; }
+  .nav-link:hover:before {
+    opacity: 1; }
 
 @media (max-width: 801px) {
   #info {
