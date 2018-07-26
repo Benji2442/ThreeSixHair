@@ -39,6 +39,8 @@ nav {
 
 
 
+
+
 .nav-link{
 	width: 120px;
 	position: relative;
@@ -48,8 +50,8 @@ nav {
 		transition: opacity 0.3s ease;
 		opacity: 0;
 		position: absolute;
-		top: 0; right: 0; bottom: 0; left: 0;
-		background-image: url("assets/Menu-Item-Est-1947.svg");
+		top: -5px; right: -5px; bottom: -5px; left: -5px;
+		background-image: url("assets/Menu-Item-Bar-Kitchen.svg");
 		background-repeat: no-repeat;
 		background-position: center;
 		content: "";
@@ -61,9 +63,6 @@ nav {
 	}
 }
 
-.nav-hover{
-
-}
 
 
 // Small devices (landscape phones, less than 768px)
