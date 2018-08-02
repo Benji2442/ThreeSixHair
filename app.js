@@ -6,24 +6,21 @@ const express        = require("express"),
 			request        = require("request"),
       app            = express();
 
-app.use(express.static('public'));
+//===============================================
+// MODELS
+//===============================================
+const Treatment = require("./models/treatment.js");
+
+//===============================================
+// CONFIG
+//===============================================
+app.use(express.static(__dirname +'/public'));
 mongoose.connect("mongodb://Benji2442:Fqks5c2442@ds247191.mlab.com:47191/threesixhair");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride("_method"));
 
-// ===============================================
-// MONGOOSE SCHEMA FOR ADDING TREATMENTS
-// ===============================================
 
-var treatmentSchema = new mongoose.Schema({
-	group:{type: String, required: true},
-	name:{type: String, required: true},
-	price:{type: String, required: true},
-	desc:{type: String}
-});
-
-var Treatment = mongoose.model("Treatment", treatmentSchema);
 
 //===============================================
 // EMAIL TO MAILCHIMP FUNCTION
