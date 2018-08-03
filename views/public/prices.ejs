@@ -1,0 +1,122 @@
+<% include ../partials/header.ejs %>
+<% include ../partials/nav-bar.ejs %>
+
+
+<div class="container-fluid" id="treatments-accordion">
+	<div class="accordion col-lg-8 col-md-10" id="accordion">
+
+	  <div class="card">
+	    <div class="card-header" id="headingOne">
+	      <h5 class="mb-0">
+	        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#styling" aria-expanded="true" aria-controls="styling">
+						<div class="heading-title">
+							<h2>Styling</h2>
+		          <p class="d-none d-sm-block">Fancy just a trim, restyle or some curls?</p>
+						</div>
+	        </button>
+	      </h5>
+	    </div>
+	    <div id="styling" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+	      <div class="card-body">
+	        <ul>
+						<% treatments.forEach(function(treatment){ %>
+							<%	if(treatment.group === "styling"){ %>
+									<li>
+										<h6><%= treatment.name %> - <%= treatment.price %></h6>
+										<p><%= treatment.desc %></p>
+									</li>
+							<%	} %>
+						<% }) %>
+	        </ul>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="card">
+	    <div class="card-header" id="headingTwo">
+	      <h5 class="mb-0">
+	        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						<div class="heading-title">
+							<h2>Treatments</h2>
+		          <p class="d-none d-sm-block">Conditioning treatments to improve or maintain the condition of your hair</p>
+						</div>
+	        </button>
+	      </h5>
+	    </div>
+	    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+	      <div class="card-body">
+	        <ul>
+						<% treatments.forEach(function(treatment){ %>
+							<%	if(treatment.group === "treatments"){ %>
+									<li>
+										<h6><%= treatment.name %> - <%= treatment.price %></h6>
+										<p><%= treatment.desc %></p>
+									</li>
+							<%	} %>
+						<% }) %>
+	        </ul>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="card">
+	    <div class="card-header" id="headingThree">
+	      <h5 class="mb-0">
+	        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						<div class="heading-title">
+							<h2>Creative/Colouring</h2>
+		          <p class="d-none d-sm-block">From highlights to balayage, roots to colour correction, we have it all!</p>
+						</div>
+	        </button>
+	      </h5>
+	    </div>
+	    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+	      <div class="card-body">
+					<ul>
+						<% treatments.forEach(function(treatment){ %>
+							<%	if(treatment.group === "creative"){ %>
+									<li>
+										<h6><%= treatment.name %> - <%= treatment.price %></h6>
+										<p><%= treatment.desc %></p>
+									</li>
+							<%	} %>
+						<% }) %>
+					</ul>
+	      </div>
+	    </div>
+	  </div>
+
+		<div class="card">
+		 <div class="card-header" id="headingFour">
+			 <h5 class="mb-0">
+				 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+					 <div class="heading-title">
+						 <h2>Extensions</h2>
+						 <p class="d-none d-sm-block">Add length, volume or colour!</p>
+					 </div>
+				 </button>
+			 </h5>
+		 </div>
+		 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+			 <div class="card-body">
+				 <ul>
+					 <% treatments.forEach(function(treatment){ %>
+						 <%	if(treatment.group === "extensions"){ %>
+								 <li>
+									 <h6><%= treatment.name %> - <%= treatment.price %></h6>
+									 <p><%= treatment.desc %></p>
+								 </li>
+						 <%	} %>
+					 <% }) %>
+				 </ul>
+			 </div>
+		 </div>
+	  </div>
+
+	</div>
+</div>
+
+
+
+
+<% include ../partials/footer.ejs %>

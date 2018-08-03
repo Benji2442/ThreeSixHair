@@ -1,15 +1,19 @@
-const express        = require("express"),
-			methodOverride = require("method-override"),
-			bodyParser     = require('body-parser'),
-			mongoose       = require("mongoose"),
-			nodemailer     = require("nodemailer"),
-			request        = require("request"),
-      app            = express();
+const express               = require("express"),
+      passportLocalMongoose = require("passport-local-mongoose"),
+			methodOverride 	      = require("method-override"),
+			LocalStrategy  	      = require("passport-local"),
+			bodyParser     	      = require('body-parser'),
+			passport              = require("passport"),
+			mongoose       	      = require("mongoose"),
+			nodemailer     	      = require("nodemailer"),
+			request        	      = require("request"),
+      app            	      = express();
 
 //===============================================
 // MODELS
 //===============================================
-const Treatment = require("./models/treatment.js");
+const Treatment      = require("./models/treatment.js"),
+      User           = require("./models/user.js");
 
 //===============================================
 // CONFIG
@@ -20,10 +24,25 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride("_method"));
 
+//===============================================
+// PASSPORT CONFIG
+//===============================================
+
+app.use(require("express-session")({
+    secret:"Charlie Hall",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 //===============================================
-// EMAIL TO MAILCHIMP FUNCTION
+// FUNCTIONS & MIDDLEWARE
 //===============================================
 
 function addEmailToMailchimp(email){
@@ -44,13 +63,20 @@ function addEmailToMailchimp(email){
 	});
 }
 
+function isLoggedIn(req, res, next){
+	if(req.isAuthenticated()){
+		return next();
+	}
+	res.redirect("/login");
+};
+
 //===============================================
 // ROUTES
 //===============================================
 
 // RENDERS LANDING PAGE
 app.get("/", function(req, res){
-    res.render("36hair");
+    res.render("./public/36hair");
 });
 
 // POST REQUEST FOR SENDING EMAIL TO MAILCHIMP LIST
@@ -66,7 +92,7 @@ app.post("/", function(req, res){
 
 // RENDERS CONTACT PAGE
 app.get("/contact", function(req, res){
-	res.render("contact");
+	res.render("./public/contact");
 });
 
 // POST REQUEST FOR SENDING EMAIL TO GMAIL FROM CONTACT FORM
@@ -104,7 +130,7 @@ app.post("/contact", function(req, res){
 		});
 
 		// redirect to contact page with "message sent alert"
-		res.redirect('contact');
+		res.redirect('./public/contact');
 });
 
 // RENDERS TREATMENTS PAGE
@@ -113,9 +139,50 @@ app.get("/prices", function(req, res){
         if(err){
             console.log(err);
         }else{
-            res.render("prices", {treatments: treatments});
+            res.render("./public/prices", {treatments: treatments});
         }
     });
+});
+
+//===============================================
+// LOGIN ROUTES
+//===============================================
+
+// RENDER SIGN UP FORM FOR ONE TIME ONLY
+app.get("/register",isLoggedIn, function(req, res){
+	res.render("./admin/register");
+});
+
+// HANDLING USER SIGN UP
+app.post("/register", function(req, res){
+	User.register(new User({username:req.body.user.username}), req.body.user.password, function(err, user){
+		if(err){
+            console.log(err);
+            return res.render("./admin/register");
+        }else{
+            passport.authenticate("local")(req, res, function(){
+            res.redirect("./admin/treatments");
+            });
+				}
+	});
+});
+
+// RENDER LOGIN FORM
+app.get("/login", function(req, res){
+	res.render("./admin/login");
+});
+
+//  HANDLE LOGIN REQUEST
+app.post("/login", passport.authenticate("local",{
+    successRedirect:"/treatments",
+    failureRedirect:"/login"
+}), function(req, res){
+});
+
+// LOGOUT button
+app.get("/logout", function(req, res){
+	req.logout();
+	res.redirect("/");
 });
 
 
@@ -124,19 +191,19 @@ app.get("/prices", function(req, res){
 //===============================================
 
 // RENDERS TABLE OF ALL TREATMENTS
-app.get("/treatments", function(req, res){
+app.get("/treatments", isLoggedIn, function(req, res){
 	Treatment.find({}, function(err, treatments){
         if(err){
             console.log(err);
         }else{
-            res.render("treatments", {treatments: treatments});
+            res.render("./admin/treatments", {treatments: treatments});
         }
     });
 });
 
 // RENDERS NEW TREATMENTS PAGE
-app.get("/treatments/new", function(req, res){
-	res.render("add-treatment");
+app.get("/treatments/new", isLoggedIn, function(req, res){
+	res.render("./admin/add-treatment");
 });
 
 // CREATE ROUTE
@@ -146,18 +213,18 @@ app.post("/treatments/new", function(req, res){
 			console.log(err);
 			res.render("/");
 		}else{
-			res.redirect("/treatments");
+			res.redirect("./admin/treatments");
 		}
 	})
 });
 
 // EDIT ROUTE
-app.get("/treatments/:id/edit", function(req, res){
+app.get("/treatments/:id/edit", isLoggedIn, function(req, res){
 	Treatment.findById(req.params.id, function(err, foundTreatment){
 		if(err){
-			res.redirect("/treatments");
+			res.redirect("./admin/treatments");
 		}else{
-			res.render("edit-treatment", {treatment: foundTreatment});
+			res.render("./admin/edit-treatment", {treatment: foundTreatment});
 		}
 	});
 });
@@ -168,7 +235,7 @@ app.put("/treatments/:id", function(req, res){
 		if(err){
         console.log(err);
     }else{
-        res.redirect("/treatments");
+        res.redirect("./admin/treatments");
     }
 	});
 });
@@ -177,9 +244,9 @@ app.put("/treatments/:id", function(req, res){
 app.delete("/treatments/:id", function(req, res){
 	Treatment.findByIdAndRemove(req.params.id, function(err){
 		if(err){
-			res.redirect("/treatments");
+			res.redirect("./admin/treatments");
 		}else{
-			res.redirect("/treatments");
+			res.redirect("./admin/treatments");
 		}
 	});
 });

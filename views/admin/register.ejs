@@ -1,0 +1,22 @@
+<% include ../partials/header.ejs %>
+<% include ../partials/nav-bar.ejs %>
+
+<div id="" class="container">
+	<div class="row">
+		<div id="" class="col-10">
+			<p class="lead">Register User</p>
+			<form action="/register" method="POST">
+				<div class="form-group">
+			    <label for="#add-username">Username</label>
+			    <input type="text" name="user[username]" class="form-control" id="add-username">
+			  </div>
+				<div class="form-group">
+			    <label for="add-password">Password</label>
+			    <input type="password" name="user[password]" class="form-control" id="add-password">
+			  </div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+
+<% include ../partials/footer.ejs %>

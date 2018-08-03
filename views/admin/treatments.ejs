@@ -1,0 +1,42 @@
+<% include ../partials/nav-bar.ejs %>
+<% include ../partials/header.ejs %>
+
+<div class="container">
+	<div class="row justify-content-center">
+		<a class="admin-buttons btn btn-success" href="/treatments/new" type="button">Add Treatment</a>
+		<a class="admin-buttons btn btn-primary" href="/register" type="button">Add User</a>
+		<a class="admin-buttons btn btn-danger" href="/logout" type="button">Logout</a>
+	</div>
+</div>
+
+<!-- TABLE OF ALL TREATMENTS -->
+<div class="container-fluid">
+	<div class="row">
+		<table class="table">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">Group</th>
+					<th scope="col">Name</th>
+					<th scope="col">Price</th>
+					<th scope="col">Description</th>
+					<th scope="col">Edit</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% treatments.forEach(function(treatment){ %>
+					<tr>
+						<td><%=treatment.group%></td>
+						<td><%= treatment.name %></td>
+						<td><%= treatment.price %></td>
+						<td><%= treatment.desc %></td>
+						<td>
+							<a type="button" class="btn btn-light" href="/treatments/<%=treatment._id %>/edit">Edit</a>
+						</td>
+					</tr>
+				<% }) %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<% include ../partials/footer.ejs %>

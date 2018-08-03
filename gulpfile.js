@@ -11,7 +11,7 @@ var nodemon = require('nodemon');
  gulp.task("styles", function(){
  	gulp.src("scss/app.scss")
  	.pipe(sass())
- 	.pipe(gulp.dest("./public"))
+ 	.pipe(gulp.dest("./public/stylesheets"))
  	.pipe(browserSync.reload({stream: true}));
  });
 

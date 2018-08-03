@@ -1,0 +1,22 @@
+<% include ../partials/header.ejs %>
+<% include ../partials/nav-bar.ejs %>
+
+<div id="" class="container">
+	<div class="row">
+		<div id="" class="col-10">
+			<p class="lead">Login</p>
+			<form action="/login" method="POST">
+				<div class="form-group">
+			    <label for="#username">Username</label>
+			    <input type="text" name="username" class="form-control" id="username">
+			  </div>
+				<div class="form-group">
+			    <label for="#password">Password</label>
+			    <input type="password" name="password" class="form-control" id="password">
+			  </div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+
+<% include ../partials/footer.ejs %>
