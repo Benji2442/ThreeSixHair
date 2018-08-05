@@ -4,10 +4,12 @@
 <% include ../partials/dashboard.ejs %>
 
 <div id="" class="container">
-	<div class="row">
-		<div id="" class="col-10">
+	<div class="row justify-content-center">
+		<div id="" class="col-md-6">
 			<p class="lead">Add a new treatment</p>
-			<form action="/treatments/<%= treatment._id %>?_method=PUT" method="POST">
+
+			<!-- EDIT FORM -->
+			<form id="edit-submit" action="/treatments/<%= treatment._id %>?_method=PUT" method="POST">
 				<div class="form-group">
 			    <label for="#add-group">New treatment group<br>
 					(styling, treatments, creative, extensions)</label>
@@ -27,11 +29,15 @@
 			    	<%=treatment.desc%>
 			    </textarea>
 			  </div>
-				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
-			<form id="delete" action="/treatments/<%= treatment._id %>?_method=DELETE" method="POST">
-				<button class="btn btn-danger">Delete</button>
-			</form>
+
+			<!-- DELETE FORM -->
+			<form id="delete" action="/treatments/<%= treatment._id %>?_method=DELETE" method="POST"></form>
+
+			<!-- BUTTON ATTACHED TO EDIT AND DELETE FORMS -->
+			<button type="submit" form="edit-submit" class="btn btn-primary">Submit</button>
+			<button class="btn btn-danger" form="delete">Delete</button>
+
 		</div>
 	</div>
 

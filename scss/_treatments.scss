@@ -2,6 +2,25 @@
 	margin: 20px 10px;
 }
 
+.block-btns{
+	display: block;
+}
+
 #delete{
-	display: inline;
+	margin-top: 10px;
+}
+
+.register{
+	margin: 50px;
+	border: 1px #adadad solid;
+	padding: 20px;
+	border-radius: 20px;
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+	.block-btns{
+		display: inline-block;
+	}
 }

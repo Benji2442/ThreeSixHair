@@ -6467,14 +6467,8 @@ nav {
     border-right: 10px solid #000;
     border-radius: 20px; }
 
-.fa {
-  padding: 9px;
-  font-size: 25px;
-  width: 42px;
-  border-radius: 50%;
-  text-decoration: none;
-  margin: 5px 2px;
-  background-color: #FFF; }
+.fixed-bottom {
+  margin-top: 50px; }
 
 #contact-info {
   padding: 60px 0 80px;
@@ -6555,5 +6549,18 @@ nav {
 .admin-buttons {
   margin: 20px 10px; }
 
+.block-btns {
+  display: block; }
+
 #delete {
-  display: inline; }
+  margin-top: 10px; }
+
+.register {
+  margin: 50px;
+  border: 1px #adadad solid;
+  padding: 20px;
+  border-radius: 20px; }
+
+@media (min-width: 576px) {
+  .block-btns {
+    display: inline-block; } }

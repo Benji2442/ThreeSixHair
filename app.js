@@ -70,6 +70,7 @@ function isLoggedIn(req, res, next){
 	res.redirect("/login");
 };
 
+
 //===============================================
 // ROUTES
 //===============================================
@@ -158,10 +159,10 @@ app.post("/register", function(req, res){
 	User.register(new User({username:req.body.user.username}), req.body.user.password, function(err, user){
 		if(err){
             console.log(err);
-            return res.render("./admin/register");
+            return res.render("/register");
         }else{
             passport.authenticate("local")(req, res, function(){
-            res.redirect("./admin/treatments");
+            res.redirect("/treatments");
             });
 				}
 	});
@@ -213,7 +214,7 @@ app.post("/treatments/new", function(req, res){
 			console.log(err);
 			res.render("/");
 		}else{
-			res.redirect("./admin/treatments");
+			res.redirect("/treatments");
 		}
 	})
 });
@@ -235,7 +236,7 @@ app.put("/treatments/:id", function(req, res){
 		if(err){
         console.log(err);
     }else{
-        res.redirect("./admin/treatments");
+        res.redirect("/treatments");
     }
 	});
 });
@@ -244,9 +245,9 @@ app.put("/treatments/:id", function(req, res){
 app.delete("/treatments/:id", function(req, res){
 	Treatment.findByIdAndRemove(req.params.id, function(err){
 		if(err){
-			res.redirect("./admin/treatments");
+			res.redirect("/treatments");
 		}else{
-			res.redirect("./admin/treatments");
+			res.redirect("/treatments");
 		}
 	});
 });
