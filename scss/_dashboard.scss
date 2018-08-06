@@ -1,0 +1,34 @@
+// .admin-buttons{
+// 	margin: 20px 10px;
+// }
+
+#dashboard{
+	margin-bottom: 40px;
+}
+
+.block-btns{
+	display: block;
+	width: 60%;
+	margin: 10px auto;
+}
+
+.dash-buttons{
+	display: block;
+}
+
+#admin-area{
+	margin-top: 50px;
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+	.block-btns{
+		display: inline-block;
+		width: auto;
+	}
+
+	.admin-buttons{
+		margin: 20px 10px;
+	}
+}

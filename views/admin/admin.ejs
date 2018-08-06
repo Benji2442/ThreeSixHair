@@ -1,0 +1,16 @@
+<% include ../partials/nav-bar.ejs %>
+<% include ../partials/header.ejs %>
+
+<div class="container">
+	<div id="admin-area" class="row align-items-center justify-content-center">
+		<div class="col-md-4">
+			<a class="admin-buttons dash-buttons btn btn-info" href="/admin">Dashboard</a>
+			<a class="admin-buttons dash-buttons btn btn-success" href="/treatments/new">Add Treatment</a>
+			<a class="admin-buttons dash-buttons btn btn-warning" href="/treatments">Edit Treatment</a>
+			<a class="admin-buttons dash-buttons btn btn-primary" href="/register">Add User</a>
+			<a class="admin-buttons dash-buttons btn btn-danger" href="/logout">Logout</a>
+		</div>
+	</div>
+</div>
+
+<% include ../partials/footer.ejs %>
