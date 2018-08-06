@@ -192,7 +192,7 @@ app.get("/logout", function(req, res){
 //===============================================
 
 // RENDERS ADMIN DASHBOARD
-app.get("/admin", function(req, res){
+app.get("/admin", isLoggedIn, function(req, res){
 	res.render("./admin/admin");
 });
 

@@ -6555,6 +6555,9 @@ nav {
   padding: 20px;
   border-radius: 20px; }
 
+.admin-buttons {
+  margin: 20px 10px; }
+
 #dashboard {
   margin-bottom: 40px; }
 
@@ -6564,7 +6567,8 @@ nav {
   margin: 10px auto; }
 
 .dash-buttons {
-  display: block; }
+  display: block;
+  margin: 10px; }
 
 #admin-area {
   margin-top: 50px; }
