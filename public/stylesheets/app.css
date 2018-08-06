@@ -6546,12 +6546,6 @@ nav {
   .display-1 {
     font-size: 4rem; } }
 
-.admin-buttons {
-  margin: 20px 10px; }
-
-.block-btns {
-  display: block; }
-
 #delete {
   margin-top: 10px; }
 
@@ -6561,6 +6555,27 @@ nav {
   padding: 20px;
   border-radius: 20px; }
 
+.admin-buttons {
+  margin: 20px 10px; }
+
+#dashboard {
+  margin-bottom: 40px; }
+
+.block-btns {
+  display: block;
+  width: 60%;
+  margin: 10px auto; }
+
+.dash-buttons {
+  display: block;
+  margin: 10px; }
+
+#admin-area {
+  margin-top: 50px; }
+
 @media (min-width: 576px) {
   .block-btns {
-    display: inline-block; } }
+    display: inline-block;
+    width: auto; }
+  .admin-buttons {
+    margin: 20px 10px; } }

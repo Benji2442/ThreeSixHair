@@ -162,7 +162,7 @@ app.post("/register", function(req, res){
             return res.render("/register");
         }else{
             passport.authenticate("local")(req, res, function(){
-            res.redirect("/treatments");
+            res.redirect("/admin");
             });
 				}
 	});
@@ -175,7 +175,7 @@ app.get("/login", function(req, res){
 
 //  HANDLE LOGIN REQUEST
 app.post("/login", passport.authenticate("local",{
-    successRedirect:"/treatments",
+    successRedirect:"/admin",
     failureRedirect:"/login"
 }), function(req, res){
 });
@@ -190,6 +190,11 @@ app.get("/logout", function(req, res){
 //===============================================
 // ADMIN ROUTES
 //===============================================
+
+// RENDERS ADMIN DASHBOARD
+app.get("/admin", isLoggedIn, function(req, res){
+	res.render("./admin/admin");
+});
 
 // RENDERS TABLE OF ALL TREATMENTS
 app.get("/treatments", isLoggedIn, function(req, res){

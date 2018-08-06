@@ -1,19 +1,22 @@
-// .admin-buttons{
-// 	margin: 20px 10px;
-// }
+.admin-buttons{
+	margin: 20px 10px;
+}
 
 #dashboard{
 	margin-bottom: 40px;
 }
 
+//dashboard buttons
 .block-btns{
 	display: block;
 	width: 60%;
 	margin: 10px auto;
 }
 
+//admin area buttons
 .dash-buttons{
 	display: block;
+	margin: 10px;
 }
 
 #admin-area{
@@ -27,7 +30,6 @@
 		display: inline-block;
 		width: auto;
 	}
-
 	.admin-buttons{
 		margin: 20px 10px;
 	}
