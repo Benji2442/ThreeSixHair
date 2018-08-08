@@ -18,8 +18,9 @@ const Treatment      = require("./models/treatment.js"),
 //===============================================
 // CONFIG
 //===============================================
+require('dotenv').config();
 app.use(express.static(__dirname +'/public'));
-mongoose.connect("mongodb://Benji2442:Fqks5c2442@ds247191.mlab.com:47191/threesixhair");
+mongoose.connect("mongodb://"+process.env.MONGODB_USER+":"+process.env.MONGODB_PASS+"@ds247191.mlab.com:47191/threesixhair");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride("_method"));
@@ -29,7 +30,7 @@ app.use(methodOverride("_method"));
 //===============================================
 
 app.use(require("express-session")({
-    secret:"Charlie Hall",
+    secret:process.env.EXPRESS_SECRET,
     resave: false,
     saveUninitialized: false
 }));
@@ -78,6 +79,7 @@ function isLoggedIn(req, res, next){
 // RENDERS LANDING PAGE
 app.get("/", function(req, res){
     res.render("./public/36hair");
+		// res.send(process.env.MONGODB_PASS);
 });
 
 // POST REQUEST FOR SENDING EMAIL TO MAILCHIMP LIST
@@ -109,16 +111,16 @@ app.post("/contact", function(req, res){
 			secure: false,
 			port: 25,
 			auth: {
-				user: "Benjamin.hall2442@gmail.com",
-				pass: "Fqks5c2442"
+				user: process.env.MAILER_USER,
+				pass: process.env.MAILER_PASS
 			},
 			tls: {
 				rejectUnauthorized: false
 			}
 		});
 		let HelperOptions = {
-			from: '"Ben Hall" <Benjamin.hall2442@gmail.com>',
-			to: 'Benjamin.hall2442@gmail.com',
+			from: '"Ben Hall" <'+process.env.MAILER_USER+'>',
+			to: process.env.MAILER_USER,
 			subject: email,
 			text: "<"+email+">"+ queryText
 		};
