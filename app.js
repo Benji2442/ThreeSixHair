@@ -1,39 +1,41 @@
-const express               = require("express"),
-      passportLocalMongoose = require("passport-local-mongoose"),
-			methodOverride 	      = require("method-override"),
-			LocalStrategy  	      = require("passport-local"),
-			bodyParser     	      = require('body-parser'),
-			passport              = require("passport"),
-			mongoose       	      = require("mongoose"),
-			nodemailer     	      = require("nodemailer"),
-			request        	      = require("request"),
-      app            	      = express();
+const express               = require('express'),
+      passportLocalMongoose = require('passport-local-mongoose'),
+      methodOverride        = require('method-override'),
+      LocalStrategy         = require('passport-local'),
+      bodyParser            = require('body-parser'),
+      passport              = require('passport'),
+      mongoose              = require('mongoose'),
+      nodemailer            = require('nodemailer'),
+      request               = require('request'),
+      app                   = express();
 
 //===============================================
 // MODELS
 //===============================================
-const Treatment      = require("./models/treatment.js"),
-      User           = require("./models/user.js");
+const Treatment      = require('./models/treatment.js'),
+      User           = require('./models/user.js');
+
+const adminRoutes = require('./routes/admin');
 
 //===============================================
 // CONFIG
 //===============================================
 require('dotenv').config();
-app.use(express.static(__dirname +'/public'));
-mongoose.connect("mongodb://"+process.env.MONGODB_USER+":"+process.env.MONGODB_PASS+"@ds247191.mlab.com:47191/threesixhair");
-app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(methodOverride("_method"));
+app.use(express.static(__dirname + '/public'));
+mongoose.connect('mongodb://' + process.env.MONGODB_URI);
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 //===============================================
 // PASSPORT CONFIG
 //===============================================
 
-app.use(require("express-session")({
-    secret:process.env.EXPRESS_SECRET,
+app.use(require('express-session')({
+    secret: process.env.EXPRESS_SECRET,
     resave: false,
-    saveUninitialized: false
-}));
+    saveUninitialized: false,
+  }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -41,40 +43,40 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
 //===============================================
 // FUNCTIONS & MIDDLEWARE
 //===============================================
 
-function addEmailToMailchimp(email){
-	var options = { method: 'POST',
-  url: 'https://us18.api.mailchimp.com/3.0/lists/c13587663f/members',
-  headers:
+function addEmailToMailchimp(email) {
+  var options = { method: 'POST',
+    url: 'https://us18.api.mailchimp.com/3.0/lists/c13587663f/members',
+    headers:
    { 'Postman-Token': 'c2acb848-e135-4fcf-bcf9-1c249281eba6',
-     'Cache-Control': 'no-cache',
-     Authorization: 'Basic YW55c3RyaW5nOmQzOTBkZTI3NmEwZjMxNzA1MGQ2ODk5MDQyNDljNWNlLXVzMTg=',
-     'Content-Type': 'application/json' },
-  body: { email_address: email, status: 'subscribed' },
-  json: true };
+      'Cache-Control': 'no-cache',
+      Authorization: 'Basic YW55c3RyaW5nOmQzOTBkZTI3NmEwZjMxNzA1MGQ2ODk5MDQyNDljNWNlLXVzMTg=',
+      'Content-Type': 'application/json', },
+    body: { email_address: email, status: 'subscribed' },
+    json: true, };
 
-	request(options, function (error, response, body) {
-	  if (error) throw new Error(error);
-
-		  console.log(body);
-	});
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+    console.log(body);
+  });
 }
 
-function isLoggedIn(req, res, next){
-	if(req.isAuthenticated()){
-		return next();
-	}
-	res.redirect("/login");
-};
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
 
+  res.redirect('/login');
+}
 
 //===============================================
 // ROUTES
 //===============================================
+
+app.use(adminRoutes);
 
 // RENDERS LANDING PAGE
 app.get("/", function(req, res){
@@ -189,75 +191,75 @@ app.get("/logout", function(req, res){
 });
 
 
-//===============================================
-// ADMIN ROUTES
-//===============================================
-
-// RENDERS ADMIN DASHBOARD
-app.get("/admin", isLoggedIn, function(req, res){
-	res.render("./admin/admin");
-});
-
-// RENDERS TABLE OF ALL TREATMENTS
-app.get("/treatments", isLoggedIn, function(req, res){
-	Treatment.find({}, function(err, treatments){
-        if(err){
-            console.log(err);
-        }else{
-            res.render("./admin/treatments", {treatments: treatments});
-        }
-    });
-});
-
-// RENDERS NEW TREATMENTS PAGE
-app.get("/treatments/new", isLoggedIn, function(req, res){
-	res.render("./admin/add-treatment");
-});
-
-// CREATE ROUTE
-app.post("/treatments/new", function(req, res){
-	Treatment.create(req.body.treatment, function(err, newTreatment){
-		if(err){
-			console.log(err);
-			res.render("/");
-		}else{
-			res.redirect("/treatments");
-		}
-	})
-});
-
-// EDIT ROUTE
-app.get("/treatments/:id/edit", isLoggedIn, function(req, res){
-	Treatment.findById(req.params.id, function(err, foundTreatment){
-		if(err){
-			res.redirect("./admin/treatments");
-		}else{
-			res.render("./admin/edit-treatment", {treatment: foundTreatment});
-		}
-	});
-});
-
-// UPDATE ROUTES
-app.put("/treatments/:id", function(req, res){
-	Treatment.findByIdAndUpdate(req.params.id, req.body.treatment, function(err, updatedTreatment){
-		if(err){
-        console.log(err);
-    }else{
-        res.redirect("/treatments");
-    }
-	});
-});
-
-// DELETE ROUTES
-app.delete("/treatments/:id", function(req, res){
-	Treatment.findByIdAndRemove(req.params.id, function(err){
-		if(err){
-			res.redirect("/treatments");
-		}else{
-			res.redirect("/treatments");
-		}
-	});
-});
+// //===============================================
+// // ADMIN ROUTES
+// //===============================================
+//
+// // RENDERS ADMIN DASHBOARD
+// app.get("/admin", isLoggedIn, function(req, res){
+// 	res.render("./admin/admin");
+// });
+//
+// // RENDERS TABLE OF ALL TREATMENTS
+// app.get("/treatments", isLoggedIn, function(req, res){
+// 	Treatment.find({}, function(err, treatments){
+//         if(err){
+//             console.log(err);
+//         }else{
+//             res.render("./admin/treatments", {treatments: treatments});
+//         }
+//     });
+// });
+//
+// // RENDERS NEW TREATMENTS PAGE
+// app.get("/treatments/new", isLoggedIn, function(req, res){
+// 	res.render("./admin/add-treatment");
+// });
+//
+// // CREATE ROUTE
+// app.post("/treatments/new", function(req, res){
+// 	Treatment.create(req.body.treatment, function(err, newTreatment){
+// 		if(err){
+// 			console.log(err);
+// 			res.render("/");
+// 		}else{
+// 			res.redirect("/treatments");
+// 		}
+// 	})
+// });
+//
+// // EDIT ROUTE
+// app.get("/treatments/:id/edit", isLoggedIn, function(req, res){
+// 	Treatment.findById(req.params.id, function(err, foundTreatment){
+// 		if(err){
+// 			res.redirect("./admin/treatments");
+// 		}else{
+// 			res.render("./admin/edit-treatment", {treatment: foundTreatment});
+// 		}
+// 	});
+// });
+//
+// // UPDATE ROUTES
+// app.put("/treatments/:id", function(req, res){
+// 	Treatment.findByIdAndUpdate(req.params.id, req.body.treatment, function(err, updatedTreatment){
+// 		if(err){
+//         console.log(err);
+//     }else{
+//         res.redirect("/treatments");
+//     }
+// 	});
+// });
+//
+// // DELETE ROUTES
+// app.delete("/treatments/:id", function(req, res){
+// 	Treatment.findByIdAndRemove(req.params.id, function(err){
+// 		if(err){
+// 			res.redirect("/treatments");
+// 		}else{
+// 			res.redirect("/treatments");
+// 		}
+// 	});
+// });
 
 
 app.listen(process.env.PORT || 3000, () => console.log("36hair Server started"));
