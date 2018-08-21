@@ -1,4 +1,4 @@
-const express               = require('express'),
+var   express               = require('express'),
       passportLocalMongoose = require('passport-local-mongoose'),
       methodOverride        = require('method-override'),
       LocalStrategy         = require('passport-local'),
@@ -13,12 +13,12 @@ const express               = require('express'),
 // MODELS & ROUTES
 //===============================================
 
-const Treatment      = require('./models/treatment.js');
-const User           = require('./models/user.js');
+var Treatment      = require('./models/treatment.js');
+var User           = require('./models/user.js');
 
-const adminRoutes = require('./routes/admin');
-const authRoutes = require('./routes/auth');
-const publicRoutes = require('./routes/public');
+var adminRoutes  = require('./routes/admin');
+var authRoutes   = require('./routes/auth');
+var publicRoutes = require('./routes/public');
 
 //===============================================
 // CONFIG
@@ -55,4 +55,4 @@ app.use(adminRoutes);
 app.use(authRoutes);
 app.use(publicRoutes);
 
-app.listen(process.env.PORT || 3000, () => console.log('36hair Server started'));
+app.listen(process.env.PORT || 3000, function () {console.log('36hair Server started');});
